@@ -71,7 +71,7 @@
             Console.Write("Enter Player ID: ");
             int id = GetValidInt();
             Console.Write("Enter Player Name: ");
-            string name = Console.ReadLine();
+            string name = GetValidString();
             Console.Write("Enter Player Age: ");
             int age = GetValidInt();
 
@@ -110,7 +110,7 @@
         public void GetPlayerByName()
         {
             Console.Write("Enter Player Name: ");
-            string name = Console.ReadLine();
+            string name = GetValidString();
 
             Player player = team.GetPlayerByName(name);
 
@@ -155,5 +155,20 @@
             } while (!intNum);
             return value;
         }
+
+        public string GetValidString()
+        {
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.Write("Enter a valid string value! --> ");
+                }
+            } while (string.IsNullOrWhiteSpace(input));
+            return input;
+        }
+
     }
 }
